@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}{{postdetail.title}}{% endblock %}
+{% block body %}
+{% include 'nav.html' %}
+        <div>
+            {{postdetail}}
+        </div>
+{% include 'footer.html' %}>
+{% endblock %}

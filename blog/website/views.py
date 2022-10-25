@@ -1,7 +1,17 @@
-from email.policy import HTTP
-from http.client import HTTPResponse
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,get_object_or_404
+from website.models import Blogpost
 
 # Create your views here.
 def home(request):
-    return render(request,'home.html')
+    blogposts = Blogpost.objects.all()
+    context = {
+        'blogposts':blogposts
+    }
+    return render(request,'home.html',context)
+
+def postdetails(request,slug):
+    postdetail = get_object_or_404(Blogpost,slug=slug)
+    context = {
+        'postdetail':postdetail
+    }
+    return render(request,'postdetails.html',context)
